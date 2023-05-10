@@ -22,13 +22,14 @@ class HomeScreen extends StatelessWidget {
           children: [
             ValueListenableBuilder(
                 valueListenable: _isObscure,
-                builder: (_, data, child) {
+                builder: (_, value, child) {
+                  dev.log('Text field widget');
                   return TextField(
                     decoration: InputDecoration(
                       labelText: 'password',
                       suffix: IconButton(
                         onPressed: () => _isObscure.value = !_isObscure.value,
-                        icon: _isObscure.value
+                        icon: value
                             ? const Icon(Icons.visibility_off)
                             : const Icon(Icons.visibility),
                       ),
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 builder: (_, data, child) {
                   dev.log('only build this widget');
                   return Text(
-                    _currentNum.value.toString(),
+                    data.toString(),
                     textScaleFactor: 4,
                   );
                 }),
